@@ -1,0 +1,23 @@
+%h1.ui.header="#{@workers.count} Workers having '#{@skill.name}' skill"
+
+- if @workers.any?
+
+  %table.ui.table
+    %thead
+      %tr
+        %th Name
+        %th Email
+        %th Skills
+    %tbody
+
+      - @workers.each do |w|
+        %tr
+          %td= w.fullname
+          %td= w.email
+          %td= w.display_skills_tags @selected_skills
+
+  = will_paginate @workers, class: "digg_pagination"
+
+- else
+
+  .ui.message No results found

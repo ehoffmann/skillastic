@@ -1,0 +1,34 @@
+%h1.ui.header Find Workers by skills
+
+= form_tag customers_home_path, {:method => 'get', class: "ui form"} do
+  .two.fields
+
+    .field
+      = collection_select :skill, :id, @skills, :id, :name,
+          {selected: @selected_skills, prompt: "Select skill(s)"},
+          {multiple: "", class: "ui dropdown"}
+
+    .field
+      = submit_tag "Search for skilled workers !",
+          :name => nil, class:"ui primary button"
+
+- if @workers.any?
+
+  %table.ui.table#workersTable
+    %thead
+      %tr
+        %th Name
+        %th Email
+        %th Skills
+        %th
+    %tbody
+      - @workers.each do |w|
+        %tr
+          %td= w.fullname
+          %td= link_to w.email, "mailto:#{w.email}"
+          %td= w.display_skills_tags @selected_skills
+  = will_paginate @workers, class: "digg_pagination"
+
+- else
+  .ui.message No results found
+

@@ -1,0 +1,61 @@
+
+
+<div class="ui segment mt60 ac-center">
+
+  <div class="ui two column centered grid">
+    <div class="column ac-center">
+      <div class="ui sizer vertical segment">
+        <h1 class="ui huge header">Welcome to Skillastic</h1>
+      </div>
+      <%#<div class="row">%>
+        <%#Find skilled people!%>
+      <%#</div>%>
+      <h2 class="ui header">
+        Find skilled people!
+      </h2>
+      <div class="row ac-center">
+        <div class="ui statistics ac-center">
+          <div class="statistic mg-auto">
+            <div class="value">
+             <%= Skill.count   %>
+            </div>
+            <div class="label">
+              Skills
+            </div>
+          </div>
+          <div class="statistic mg-auto">
+            <div class="value">
+             <%= Worker.count   %>
+            </div>
+            <div class="label">
+              Workers
+            </div>
+          </div>
+          <div class="statistic mg-auto">
+            <div class="value">
+              <%= Customer.count %>
+            </div>
+            <div class="label">
+              Members
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="ui four column centered grid">
+    <div class="column ac-center">
+      <%= link_to "Worker login", new_worker_session_path, class:"ui green button huge" %>
+    </div>
+    <div class="column ac-center">
+      <%= link_to "Customer login", new_customer_session_path, class:"ui blue button huge" %>
+    </div>
+  </div>
+
+</div>
+
+
+

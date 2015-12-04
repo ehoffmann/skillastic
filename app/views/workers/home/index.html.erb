@@ -1,0 +1,37 @@
+<div class="ui two column grid">
+  <div class="column">
+    <h2 class="ui header"> Your skills </h2>
+    <div class="ui middle aligned divided list">
+      <% @worker.skills.each do |skill|   %>
+        <div class="item">
+          <div class="right floated content">
+            <%= form_for skill, url: workers_skills_path, method: :delete do |f|  %>
+              <%= f.hidden_field :id %>
+              <%= f.submit "Remove", class:"ui button"   %>
+            <% end %>
+          </div>
+          <div class="content padding_10"><%= skill.name %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="ui header"> Skills available </h2>
+    <div class="ui middle aligned divided list">
+      <% (Skill.all - @worker.skills).each do |skill|  %>
+        <div class="item">
+          <div class="right floated content">
+            <%= form_for skill, url: workers_skills_path, method: :post, html: {class: "add_skill"} do |f|  %>
+              <%= f.hidden_field :id %>
+              <%= f.submit "Add", class:"ui button"   %>
+            <% end %>
+           </div>
+          <div class="content padding_10">
+            <%= skill.name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

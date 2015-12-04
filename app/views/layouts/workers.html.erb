@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Skillastic - Workers" %></title>
+    <%= render "layouts/head" %>
+  </head>
+  <body>
+
+    <div class="ui container">
+      <%= render "layouts/workers_nav" %>
+      <%= render "layouts/messages"   %>
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

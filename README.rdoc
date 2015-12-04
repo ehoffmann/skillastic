@@ -1,0 +1,9 @@
+== README
+
+==== A simple demo app that matches workers and customers.
+
+Worker login: 42@test.com, password: 12345678
+
+Customer login: 42@test.com, password: 12345678
+
+https://calm-reef-5389.herokuapp.com

@@ -1,0 +1,65 @@
+<%= form_for(@skill, url: "#") do |f| %>
+  <% if @skill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@skill.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @skill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Category", :id => "submit__my_form" %>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
+  $(document).on('click', '#submit__my_form', function(event) {
+    event.preventDefault();
+    console.log($('#new_skill').attr('action'));
+    console.log($('#new_skill').serialize());
+    var valuesToSubmit = $('#new_skill').serialize();
+
+    $.ajax({
+      type: "POST",
+      //contentType: "application/json; charset=utf-8",
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      url: $('#new_skill').attr('action'),
+      data: $('#new_skill').serialize(),
+      //data: {name: "my name"},
+      dataType: "JSON",
+      processData: false,
+      //contentType: false,
+      success: function (result) {
+        alert(result);
+      },
+      error: function () {
+        window.alert("Something went wrong! Please try again");
+      }
+    });
+  });
+});
+
+<%#$('form').submit(function() {  %>
+    <%#var valuesToSubmit = $(this).serialize();%>
+    <%#console.log(valuesToSubmit);%>
+    <%#$.ajax({%>
+        <%#type: "POST",%>
+        <%#url: $(this).attr('action'), //sumbits it to the given url of the form%>
+        <%#data: valuesToSubmit,%>
+        <%#dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard%>
+    <%#}).success(function(json){%>
+        <%#console.log("success", json);%>
+    <%#});%>
+    <%#return false; // prevents normal behaviour%>
+<%#});%>
+</script>

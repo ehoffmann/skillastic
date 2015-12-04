@@ -1,0 +1,13 @@
+<div class="ui secondary pointing menu">
+
+  <%= link_to "Welcome #{current_worker.fullname}", workers_home_path, class: "ui item" %>
+  <a class="item popup" data-content="Coming soon...">My Stats</a>
+  <div class="right menu">
+    <%= link_to edit_worker_registration_path, class: "item" do
+        %(<i class="user icon"></i>My worker account).html_safe
+    end %>
+    <%= link_to(destroy_worker_session_path, :method => :delete, class: "ui item") do
+        %(<i class="power icon"></i>Logout).html_safe
+    end %>
+  </div>
+</div>

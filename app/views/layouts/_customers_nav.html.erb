@@ -1,0 +1,14 @@
+<div class="ui secondary pointing menu">
+  <%= link_to "Find Workers", customers_home_path, class: "item" %>
+  <a class="item popup" data-content="Coming soon...">Skills</a>
+  <a class="item popup" data-content="Coming soon..."> Messages </a>
+  <div class="right menu">
+    <%= link_to edit_customer_registration_path, class: "item" do
+        %(<i class="user icon"></i>My customer account).html_safe
+    end %>
+    <%= link_to(destroy_customer_session_path, :method => :delete, class: "ui item") do
+        %(<i class="power icon"></i>Logout).html_safe
+    end %>
+    <p class="item">Welcome <%= current_customer.fullname  %></p>
+  </div>
+</div>

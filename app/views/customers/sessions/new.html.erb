@@ -1,0 +1,35 @@
+<div class="ui container grid raised">
+
+  <div class="four wide column"></div>
+  <div class="eight wide column">
+
+    <h2 class="ui header"><%= resource_name.capitalize %> Log in</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "ui form"}) do |f| %>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="ui toggle checkbox">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+
+      <div class="ui divider"></div>
+      <div class="actions">
+        <%= f.submit "Log in", class: "ui button" %>
+      </div>
+    <% end %>
+
+    <br />
+    <br />
+
+    <%= render "customers/shared/links" %>
+  </div>
+  <div class="four wide column"></div>
+</div>
